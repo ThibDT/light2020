@@ -117,9 +117,13 @@
                     $("#modalForm button[type=submit]").off().click(function () {
                         let lightIndex = $("#idInput").val();
                         let color = $("#modalForm input[type=color]").val();
+                        
                         lights[lightIndex].color = color;
+                        
+                        var bulb = $(`#light-${lightIndex}`).find(".fa-lightbulb")
+                        bulb.data('color', color)
                         if (lights[lightIndex].state) {
-                            $(`#light-${lightIndex}`).find(".fa-lightbulb").css('color', color)
+                            bulb.css('color', color)
                         }
                         $("#modalForm").modal('hide')
                     })
